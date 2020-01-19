@@ -7,4 +7,4 @@
 
 | Method  | Batch Size | Image Size | Backbone | Projection Size | Projection Hidden Size | epochs | Optimizer | CIFAR-10
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| linear evaluation  | 512 | 224x224 | ResNet18 | 256 | 4096 | 100 | Adam | **-** | 
+| linear evaluation  | 512 | 224x224 | ResNet18 | 256 | 4096 | 100 | Adam | **82.518%** | 
