@@ -11,6 +11,7 @@ import random
 
 device = 'cuda'
 
+
 class RandomApply(nn.Module):
     def __init__(self, fn, p):
         super().__init__()
