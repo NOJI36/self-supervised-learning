@@ -5,7 +5,6 @@ from torch.utils.data import DataLoader, Dataset
 import torchvision
 
 import torch.optim as optim
-from torchlars import LARS
 
 from BYOL import BYOL
 
