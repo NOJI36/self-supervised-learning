@@ -7,8 +7,6 @@ import copy
 
 import random
 
-# from transform.simclr import TransformsSimCLR
-
 device = 'cuda'
 
 class RandomApply(nn.Module):
@@ -106,9 +104,7 @@ class BYOL(nn.Module):
             param.requires_grad = False
 
     def EMA(self, step, EPOCHS):
-        ##tau = 1 - (1 - self.tau_base) * (math.cos(math.pi * step / EPOCHS) + 1) / 2
-        tau = self.tau_base
-        #print(tau)
+        tau = 1 - (1 - self.tau_base) * (math.cos(math.pi * step / EPOCHS) + 1) / 2
         for param_target, param_online in zip(self.target.parameters(), self.online.parameters()):
             param_target.data = tau * param_target.data + (1 - tau) * param_online.data
             
@@ -135,18 +131,3 @@ class BYOL(nn.Module):
         loss = loss_one + loss_two
 
         return loss.mean()
-
-    # def forward(self, image_one, image_two):
-    #     online_pred_one = self.online(image_one)
-    #     online_pred_two = self.online(image_two)
-
-    #     with torch.no_grad():
-    #         target_proj_one = self.target(image_one)
-    #         target_proj_two = self.target(image_two)
-
-    #     loss_one = self.loss_fn(online_pred_one, target_proj_two.detach())
-    #     loss_two = self.loss_fn(online_pred_two, target_proj_one.detach())
-
-    #     loss = loss_one + loss_two
-
-    #     return loss.mean()
